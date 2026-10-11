@@ -6,7 +6,7 @@ Federated Clinical Intelligence Network, Tiger Data Sentinel, Snowflake Vector R
 
 MediChain Omni is an intelligent clinical decision support and outbreak surveillance platform designed to bridge hospital telemetry, federated outbreak analytics, and immutable patient audit trails.
 
-- **Frontend**: Next.js 15 (App Router, TypeScript, Tailwind CSS, Lucide icons)
+- **Frontend**: Next.js 16 (App Router, TypeScript, Tailwind CSS, Lucide icons, Three.js)
 - **Backend**: FastAPI (Python), Sentinel Engine, Vector RAG (Snowflake & Healthcare Datasets), Live Outbreak Scraper, Solana Audit Trail
 
 ---
@@ -22,19 +22,55 @@ MediChain Omni is an intelligent clinical decision support and outbreak surveill
 │   ├── live_outbreak_scraper.py # Real-time outbreak registry
 │   ├── snowflake_kb.py       # Snowflake knowledge base integration
 │   ├── requirements.txt      # Python dependencies
+│   ├── Dockerfile            # Container definition for container platforms
+│   ├── Procfile              # Process runner for Railway/Heroku/Render
 │   └── .env.example          # Environment variables template
 │
-└── frontend/                 # Next.js clinical dashboard
-    ├── src/
-    │   ├── app/              # App router pages & layouts
-    │   └── components/       # Clinical UI decks, radar map, 3D anatomical viewer
-    ├── package.json          # Node dependencies & scripts
-    └── .env.example          # Frontend configuration template
+├── frontend/                 # Next.js clinical dashboard
+│   ├── src/
+│   │   ├── app/              # App router pages & layouts
+│   │   └── components/       # Clinical UI decks, radar map, 3D anatomical viewer
+│   ├── package.json          # Node dependencies & scripts
+│   └── .env.example          # Frontend configuration template
+│
+├── .github/workflows/        # Automated CI/CD workflow
+├── render.yaml               # Render Infrastructure Blueprint
+└── vercel.json               # Vercel Monorepo deployment config
 ```
 
 ---
 
-## 🚀 Getting Started
+## 🌐 Full Stack Deployment Guide
+
+### Option A: Frontend on Vercel (Recommended)
+1. Go to [vercel.com](https://vercel.com) and click **"Add New Project"**.
+2. Select your repository `khushalgoel/MediChainOmni`.
+3. Vercel will automatically detect `vercel.json` and set the root directory to `frontend`.
+4. Add your environment variables:
+   - `NEXT_PUBLIC_API_URL`: Your deployed backend URL (or leave blank for localhost/mock mode)
+   - `NEXT_PUBLIC_GEMINI_API_KEY`: Your Gemini API key
+   - `NEXT_PUBLIC_ELEVENLABS_API_KEY`: Your ElevenLabs API key
+5. Click **Deploy**.
+
+### Option B: Backend on Render (1-Click Blueprint)
+1. Go to [render.com](https://render.com) and click **"New" -> "Blueprint"**.
+2. Connect your GitHub repository `khushalgoel/MediChainOmni`.
+3. Render reads [`render.yaml`](render.yaml) automatically and provisions the web service.
+4. Fill in secret environment variables in the Render dashboard:
+   - `GEMINI_API_KEY`
+   - `ELEVENLABS_API_KEY`
+5. Click **Apply**. Render gives you a public URL (e.g., `https://medichain-omni-backend.onrender.com`).
+6. Paste this URL into your Frontend's `NEXT_PUBLIC_API_URL`!
+
+### Option C: Backend on Railway
+1. Go to [railway.app](https://railway.app) and create **"New Project from GitHub Repo"**.
+2. Select `khushalgoel/MediChainOmni`.
+3. In settings, set the **Root Directory** to `/backend`.
+4. Add your environment variables and Railway will deploy automatically.
+
+---
+
+## 🚀 Local Development
 
 ### 1. Backend Setup
 
