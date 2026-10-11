@@ -1,0 +1,102 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --bg-base: #f1f4f8;
+    --bg-card: #ffffff;
+    --text-primary: #1e293b;
+    --text-secondary: #64748b;
+    --accent-orange: #ff6332;
+    --accent-coral: #ff5252;
+    --accent-green: #10b981;
+    --accent-blue: #3b82f6;
+  }
+
+  body {
+    background-color: #f1f4f8;
+    color: #1e293b;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Inter", "Plus Jakarta Sans", sans-serif;
+    overflow-x: hidden;
+  }
+}
+
+/* HUMEDIX+ Neumorphic & Frosted Glass Dashboard Card */
+.humedix-card {
+  background: #ffffff;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(226, 232, 240, 0.85);
+  box-shadow: 0 10px 30px -4px rgba(0, 0, 0, 0.04), 0 2px 8px -2px rgba(0, 0, 0, 0.02);
+  transition: all 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+  overflow: hidden;
+}
+
+.humedix-card:hover {
+  box-shadow: 0 14px 38px -6px rgba(0, 0, 0, 0.07);
+}
+
+.humedix-card-elevated {
+  background: linear-gradient(145deg, #ffffff, #fbfcfe);
+  border-radius: 1.5rem;
+  border: 1px solid rgba(255, 99, 50, 0.25);
+  box-shadow: 0 12px 36px -4px rgba(255, 99, 50, 0.08);
+  overflow: hidden;
+}
+
+/* Dark mode panel for clinical radar, low-light ICU nodes, and Solana Devnet terminal */
+.surgical-panel {
+  background: #090d16;
+  color: #f8fafc;
+  border-radius: 1.5rem;
+  border: 1px solid rgba(30, 41, 59, 0.85);
+  box-shadow: 0 14px 35px -4px rgba(0, 0, 0, 0.35);
+  overflow: hidden;
+}
+
+.surgical-panel-hazard {
+  background: #17080b;
+  border: 1.5px solid #ff4d4f;
+  box-shadow: 0 0 30px rgba(255, 77, 79, 0.25);
+}
+
+/* Heartbeat pulse animation */
+@keyframes heartBeatPulse {
+  0% { transform: scale(1); }
+  14% { transform: scale(1.1); }
+  28% { transform: scale(1); }
+  42% { transform: scale(1.14); }
+  70% { transform: scale(1); }
+}
+
+.animate-heartbeat {
+  animation: heartBeatPulse 1.35s ease-in-out infinite;
+  transform-origin: center;
+}
+
+/* Waveform pulse */
+@keyframes ecgScroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+.animate-ecg {
+  animation: ecgScroll 8s linear infinite;
+}
+
+/* Custom Soft Scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f1f4f8;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #cbd5e1;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #94a3b8;
+}
